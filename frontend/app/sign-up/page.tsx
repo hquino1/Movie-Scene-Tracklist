@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 import './pages.modules.css';
+import logoImg from '../../public/assets/videocam.png';
 
 const page = () => {
   const [username, setUsername] = useState('');
@@ -27,7 +28,8 @@ const page = () => {
   return (
     <div className='sign-up-page'>
       <span className='logo'>
-        
+        <img src={logoImg.src} className='logoImg'></img>
+        <h1 className='logoText'>Movie Sound Scene Database</h1>
       </span>
       <GoogleOAuthProvider clientId="YOUR_GOOGLE_CLIENT_ID">
         <div className="signup-container">

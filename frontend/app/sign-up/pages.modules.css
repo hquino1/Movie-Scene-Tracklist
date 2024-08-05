@@ -65,6 +65,18 @@ input {
 }
 
 .logo{
+  position: absolute;
   border: 1px solid white;
-  
+  height: 10%;
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  top: 5vh;
+  border-radius: 20px;
+}
+
+.logoText{
+  position: relative;
+  margin-top: auto;
+  margin-bottom: auto;
 }
