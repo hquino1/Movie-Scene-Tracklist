@@ -6,14 +6,16 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "clean": "if exist .next rmdir /s /q .next"
   },
   "dependencies": {
     "@react-oauth/google": "^0.12.1",
     "firebase": "^10.12.5",
     "next": "14.2.5",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-firebase-hooks": "^5.1.1"
   },
   "devDependencies": {
     "@types/node": "^20",
