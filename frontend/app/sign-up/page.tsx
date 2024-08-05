@@ -5,7 +5,7 @@ import './pages.modules.css';
 import logoImg from '../../public/assets/videocam.png';
 import { useCreateUserWithEmailAndPassword} from 'react-firebase-hooks/auth';
 import {auth} from '@/app/firebase/config';
-import { GoogleAuthProvider, signInWithCredential } from 'firebase/auth/web-extension';
+import { GoogleAuthProvider, signInWithCredential } from 'firebase/auth';
 
 const page = () => {
   const [username, setUsername] = useState('');
@@ -40,7 +40,7 @@ const page = () => {
     }
   };
 
-  const handleGoogleFailure = (error: any) => {
+  const handleGoogleFailure = (error: void) => {
     console.log('Google Failure:', error);
     // Handle Google login failure logic
   };
@@ -80,6 +80,7 @@ const page = () => {
           <div className="google-login">
             <GoogleLogin
               onSuccess={handleGoogleSuccess}
+              onError={handleGoogleFailure}
             />
           </div>
         </div>
