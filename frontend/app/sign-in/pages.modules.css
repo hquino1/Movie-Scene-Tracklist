@@ -11,23 +11,23 @@
   margin-bottom: auto;
 }
 
-.local-class h2 {
+.signUp {
   text-align: center;
   margin-bottom: 20px;
-  color: black;
+  color: #1C1C1c;
 }
 
 .form-group {
   margin-bottom: 15px;
 }
 
-.local-class label {
+.label {
   display: block;
   margin-bottom: 5px;
   color: black;
 }
 
-.local-class input {
+.input {
   width: 100%;
   padding: 8px;
   box-sizing: border-box;
@@ -53,8 +53,13 @@
 }
 
 .google-login {
-  margin-top: 20px;
+  margin-top: 6px;
   text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  background-color: red;
+  width: 190px;
 }
 
 .sign-up-page{
@@ -78,4 +83,11 @@
   position: relative;
   margin-top: auto;
   margin-bottom: auto;
+}
+
+.orHeader{
+  color: #1C1C1c;
+  text-align: center;
+  font-size: 17px;
+  margin-top: 1vh;
 }

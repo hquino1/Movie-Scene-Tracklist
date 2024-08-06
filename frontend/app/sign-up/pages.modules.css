@@ -14,7 +14,7 @@
 h2 {
   text-align: center;
   margin-bottom: 20px;
-  color: black;
+  color: #1C1C1c;
 }
 
 .form-group {
@@ -53,12 +53,13 @@ input {
 }
 
 .google-login {
-  position: relative;
-  margin-top: 20px;
+  margin-top: 6px;
   text-align: center;
   margin-left: auto;
   margin-right: auto;
-  justify-content: center;
+  position: relative;
+  background-color: red;
+  width: 190px;
 }
 
 .sign-up-page{
@@ -82,4 +83,11 @@ input {
   position: relative;
   margin-top: auto;
   margin-bottom: auto;
+}
+
+.orHeader{
+  color: #1C1C1c;
+  text-align: center;
+  font-size: 17px;
+  margin-top: 1vh;
 }

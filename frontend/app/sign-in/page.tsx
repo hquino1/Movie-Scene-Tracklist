@@ -1,7 +1,7 @@
 'use client'
 import React, { useState } from 'react';
 import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
-import './page.module.css';
+import './pages.modules.css';
 import logoImg from '../../public/assets/videocam.png';
 import { useSignInWithEmailAndPassword} from 'react-firebase-hooks/auth';
 import {auth} from '@/app/firebase/config';
@@ -55,30 +55,33 @@ const SignIn = () => {
       </span>
       <GoogleOAuthProvider clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID as string}>
         <div className="signup-container">
-          <h2>Sign Up</h2>
+          <h2 className='signUp'>Sign In To MSSD</h2>
           <form onSubmit={handleSubmit}>
             <div className="form-group">
-              <label htmlFor="username">Username</label>
+              <label htmlFor="username" className='label'>Username</label>
               <input
                 type="text"
                 id="username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
+                className='input'
                 required
               />
             </div>
             <div className="form-group">
-              <label htmlFor="password">Password</label>
+              <label htmlFor="password" className='label'>Password</label>
               <input
                 type="password"
                 id="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
+                className='input'
                 required
               />
             </div>
-            <button type="submit" className="signup-btn">Sign Up</button>
+            <button type="submit" className="signup-btn">Sign In</button>
           </form>
+          <h2 className='orHeader'>Or</h2>
           <div className="google-login">
             <GoogleLogin
               onSuccess={handleGoogleSuccess}

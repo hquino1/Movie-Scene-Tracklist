@@ -53,7 +53,7 @@ const page = () => {
       </span>
       <GoogleOAuthProvider clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID as string}>
         <div className="signup-container">
-          <h2>Sign Up</h2>
+          <h2>Join MSSD Today!</h2>
           <form onSubmit={handleSubmit}>
             <div className="form-group">
               <label htmlFor="username">Username</label>
@@ -77,6 +77,7 @@ const page = () => {
             </div>
             <button type="submit" className="signup-btn">Sign Up</button>
           </form>
+          <h1 className='orHeader'>Or</h1>
           <div className="google-login">
             <GoogleLogin
               onSuccess={handleGoogleSuccess}
