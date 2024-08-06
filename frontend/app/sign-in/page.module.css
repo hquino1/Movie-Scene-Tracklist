@@ -11,7 +11,7 @@
   margin-bottom: auto;
 }
 
-h2 {
+.local-class h2 {
   text-align: center;
   margin-bottom: 20px;
   color: black;
@@ -21,13 +21,13 @@ h2 {
   margin-bottom: 15px;
 }
 
-label {
+.local-class label {
   display: block;
   margin-bottom: 5px;
   color: black;
 }
 
-input {
+.local-class input {
   width: 100%;
   padding: 8px;
   box-sizing: border-box;
@@ -53,12 +53,8 @@ input {
 }
 
 .google-login {
-  position: relative;
   margin-top: 20px;
   text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-  justify-content: center;
 }
 
 .sign-up-page{
