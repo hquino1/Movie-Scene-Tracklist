@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 import './pages.modules.css';
 import logoImg from '../../public/assets/videocam.png';
+import mssdLogo from '../../public/assets/Screenshot 2024-08-06 164631.png';
 import { useCreateUserWithEmailAndPassword} from 'react-firebase-hooks/auth';
 import {auth} from '@/app/firebase/config';
 import { GoogleAuthProvider, signInWithCredential } from 'firebase/auth';
@@ -48,8 +49,7 @@ const page = () => {
   return (
     <div className='sign-up-page'>
       <span className='logo'>
-        <img src={logoImg.src} className='logoImg'></img>
-        <h1 className='logoText'>Movie Sound Scene Database</h1>
+        <img src={mssdLogo.src} className='logoImg'></img>
       </span>
       <GoogleOAuthProvider clientId={process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID as string}>
         <div className="signup-container">

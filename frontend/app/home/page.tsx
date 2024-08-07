@@ -1,7 +1,12 @@
+'use client'
+import './pages.modules.css';
+import NavBar from '../../components/NavBar';
 
 const Home = () => {
     return (
-        <h1>Home Page</h1>
+        <section className="homeContainer">
+           <NavBar></NavBar> 
+        </section>
     );
 }; 
 
