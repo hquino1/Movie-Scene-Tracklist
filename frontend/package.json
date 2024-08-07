@@ -10,6 +10,7 @@
     "clean": "if exist .next rmdir /s /q .next"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^6.6.0",
     "@react-oauth/google": "^0.12.1",
     "firebase": "^10.12.5",
     "next": "14.2.5",

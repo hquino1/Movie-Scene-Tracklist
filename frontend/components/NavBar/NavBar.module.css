@@ -15,7 +15,6 @@
 .logo{
     width: 33.5%;
     height: 100%;
-    border: 1px solid red;
 }
 
 .logoImage{
@@ -28,13 +27,48 @@
 .search{
     position: relative;
     background-color: white;
-    border: 2px solid lightskyblue;
-    left: 2vw;
+    border: 2px solid #0D93DD;
     height: 60%;
     margin-top: auto;
     margin-bottom: auto;
-    width: 30%;
-    border-radius: 20px;
+    width: 90%;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
     color: black;
-    padding-left: 3px;
+    padding-left: 20px;
+    font-size: 16px;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.searchLogo{
+    position: relative;
+    height: 25px;
+    text-align: center;
+    left: 0.5vw;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.searchContainer{
+    position: relative;
+    display: flex;
+    width: 34%;
+    left: 3vw;
+}
+
+.searchLogoContainer{
+    background-color: #0D93DD;
+    position: relative;
+    height: 60%;
+    width: 10%;
+    margin-top: auto;
+    margin-bottom: auto;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+.searchLogoContainer:hover{
+    cursor: pointer;
+    background-color: #0783c6;
 }
