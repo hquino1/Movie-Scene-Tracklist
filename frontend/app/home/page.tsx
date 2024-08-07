@@ -1,6 +1,6 @@
-'use client'
+'use client';
 import './pages.modules.css';
-import NavBar from '../../components/NavBar';
+import NavBar from '@/components/NavBar/NavBar';
 
 const Home = () => {
     return (

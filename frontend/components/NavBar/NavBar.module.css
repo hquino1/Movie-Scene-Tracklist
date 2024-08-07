@@ -1,0 +1,40 @@
+.container{
+    position: relative;
+    height: 8%;
+    width: 100%;
+    color: black;
+    background-color: white;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+    display: flex;
+}
+
+.header1{
+    color: blue;
+}
+
+.logo{
+    width: 33.5%;
+    height: 100%;
+    border: 1px solid red;
+}
+
+.logoImage{
+    position: relative;
+    height: 60px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.search{
+    position: relative;
+    background-color: white;
+    border: 2px solid lightskyblue;
+    left: 2vw;
+    height: 60%;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 30%;
+    border-radius: 20px;
+    color: black;
+    padding-left: 3px;
+}
