@@ -3,6 +3,7 @@ import styles from './NavBar.module.css';
 import logoImg from '../../public/assets/Screenshot 2024-08-06 164631.png';
 import searchIcon from '../../public/assets/graySearch.png';
 import { usePathname } from 'next/navigation';
+import Link from 'next/link';
 
 const NavBar = () => {
     const pathname = usePathname();
@@ -20,17 +21,42 @@ const NavBar = () => {
                 </div>
             </div>
             <ul className={styles.ulContainer}>
-                <li
+                <Link href={'/home'} className={styles.linkContainer}>
+                    <li
+                        className={styles.liContainer}
+                        style={{
+                            backgroundColor: pathname === '/home' ? '#0D93DD' : 'transparent',
+                            color: pathname === '/home' ? 'white' : 'black'
+                        }}
+                        >
+                        Home
+                    </li>
+                </Link>
+
+                <Link href={'/likedMovies'} className={styles.linkContainer}>
+                    <li
                     className={styles.liContainer}
                     style={{
-                        backgroundColor: pathname === '/home' ? '#0D93DD' : 'transparent',
-                        color: pathname === '/home' ? 'white' : 'black'
+                        backgroundColor: pathname === '/likedMovies' ? '#0D93DD' : 'transparent',
+                        color: pathname === '/likedMovies' ? 'white' : 'black'
                     }}
                     >
-                    Home
-                </li>
-                <li className={styles.liContainer}>Liked Movies</li>
-                <li className={styles.liContainer}>Settings</li>
+                    Liked Movies
+                    </li>
+                </Link>
+
+                <Link href={'/settings'} className={styles.linkContainer}>
+                    <li
+                    className={styles.liContainer}
+                    style={{
+                        backgroundColor: pathname === '/settings' ? '#0D93DD' : 'transparent',
+                        color: pathname === '/settings' ? 'white' : 'black'
+                    
+                    }}
+                    >
+                    Settings
+                    </li>
+                </Link>
             </ul>
         </header>
     );

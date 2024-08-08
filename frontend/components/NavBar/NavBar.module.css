@@ -96,3 +96,9 @@
     cursor: pointer;
     background-color: lightgray;
 }
+
+.linkContainer{
+    position: relative;
+    margin-top: auto;
+    margin-bottom: auto;
+}

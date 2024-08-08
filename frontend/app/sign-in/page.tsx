@@ -8,6 +8,7 @@ import { useSignInWithEmailAndPassword} from 'react-firebase-hooks/auth';
 import {auth} from '@/app/firebase/config';
 import { GoogleAuthProvider, signInWithCredential } from 'firebase/auth';
 import { useRouter } from 'next/navigation';
+import { serialize } from 'v8';
 
 const SignIn = () => {
   const [username, setUsername] = useState('');
