@@ -72,3 +72,27 @@
     cursor: pointer;
     background-color: #0783c6;
 }
+
+.ulContainer{
+    position: relative;
+    display: flex;
+    list-style: none;
+    gap: 4vw;
+    margin-left: auto;
+    width: 29%;
+    justify-content: center;
+}
+
+.liContainer{
+    position: relative;
+    margin-top: auto;
+    margin-bottom: auto;
+    padding: 5px 5px 5px 5px;
+    border-radius: 15px;
+    font-weight: bold;
+}
+
+.liContainer:hover{
+    cursor: pointer;
+    background-color: lightgray;
+}
