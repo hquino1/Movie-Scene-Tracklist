@@ -22,7 +22,6 @@ const SignIn = () => {
     try {
       const email = username;
       const res = await signInWithEmailAndPassword(email, password);
-      console.log({res});
       setUsername('');
       setPassword('');
       router.push('/home');
