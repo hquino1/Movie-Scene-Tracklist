@@ -4,10 +4,21 @@ import logoImg from '../../public/assets/Screenshot 2024-08-06 164631.png';
 import searchIcon from '../../public/assets/graySearch.png';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
+import { useRef } from 'react';
 
-const NavBar = () => {
+interface NavBarProps{
+    getUserInput: (searchBarInput: string) => void
+}
+
+const NavBar: React.FC<NavBarProps> = ({getUserInput}) => {
     const pathname = usePathname();
+    const formRef = useRef<HTMLFormElement>(null);
 
+    const handleClick = () =>{
+        if (formRef.current) {
+            formRef.current.submit();
+        }
+    };
 
     return (
         <header className={styles.container}>
@@ -15,10 +26,12 @@ const NavBar = () => {
                 <img src={logoImg.src} className={styles.logoImage}></img>
             </div>
             <div className={styles.searchContainer}>
-                <input className={styles.search} placeholder='Search movies'></input>
-                <div className={styles.searchLogoContainer}>
-                    <img className={styles.searchLogo} src={searchIcon.src}></img>
-                </div>
+                <form action="">
+                    <input className={styles.search} placeholder='Search movies'></input>
+                    <div className={styles.searchLogoContainer} onClick={handleClick}>
+                        <img className={styles.searchLogo} src={searchIcon.src}></img>
+                    </div>
+                </form>
             </div>
             <ul className={styles.ulContainer}>
                 <Link href={'/home'} className={styles.linkContainer}>

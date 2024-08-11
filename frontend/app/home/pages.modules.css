@@ -3,4 +3,6 @@
   background-color: lightgray;
   height: 100vh;
   color: black;
+  display: flex;
+  flex-direction: column;
 }
