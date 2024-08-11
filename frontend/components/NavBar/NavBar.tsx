@@ -5,6 +5,7 @@ import searchIcon from '../../public/assets/graySearch.png';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { useRef } from 'react';
+import { useState } from 'react';
 
 interface NavBarProps{
     getUserInput: (searchBarInput: string) => void
@@ -13,10 +14,18 @@ interface NavBarProps{
 const NavBar: React.FC<NavBarProps> = ({getUserInput}) => {
     const pathname = usePathname();
     const formRef = useRef<HTMLFormElement>(null);
+    const [value, setValue] = useState('');
+
+    const handleSubmit = (event: React.FormEvent) => {
+        event.preventDefault();
+        getUserInput(value);
+        setValue('');
+    };
 
     const handleClick = () =>{
+        console.log("Form Submit Func was enetered.");
         if (formRef.current) {
-            formRef.current.submit();
+            formRef.current.requestSubmit();
         }
     };
 
@@ -26,8 +35,8 @@ const NavBar: React.FC<NavBarProps> = ({getUserInput}) => {
                 <img src={logoImg.src} className={styles.logoImage}></img>
             </div>
             <div className={styles.searchContainer}>
-                <form action="">
-                    <input className={styles.search} placeholder='Search movies'></input>
+                <form ref={formRef} onSubmit={handleSubmit} className={styles.formContainer}>
+                    <input className={styles.search} placeholder='Search movies' onChange={(e) => setValue(e.target.value)} value={value}></input>
                     <div className={styles.searchLogoContainer} onClick={handleClick}>
                         <img className={styles.searchLogo} src={searchIcon.src}></img>
                     </div>

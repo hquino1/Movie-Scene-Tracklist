@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './pages.modules.css';
 import NavBar from '@/components/NavBar/NavBar';
 import HomeNavBar from '@/components/HomeNavBar/HomeNavBar';
@@ -15,14 +15,16 @@ const Home = () => {
     const { user, loading } = useAuth();
     const router = useRouter();
 
+    useEffect(() => {
+        console.log("UserInput was changed to: ", userInput);
+    }, [userInput]);
+
     const searchQuery = (userSelection: string) =>{
         setSearch(userSelection);
-        console.log(search);
     }
 
     const getUserInput = (searchBarInput: string) => {
         setUserInput(searchBarInput);
-        console.log(userInput);
     };
 
     if (!loading && !user){

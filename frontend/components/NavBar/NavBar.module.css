@@ -103,3 +103,9 @@
     margin-top: auto;
     margin-bottom: auto;
 }
+
+.formContainer{
+    position: relative;
+    display: flex;
+    width: 90%;
+}
