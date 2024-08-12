@@ -1,3 +1,29 @@
 .homeContentContainer{
+    position: relative;
     height: 100%;
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+.movieCardHolder{
+    border: 1px solid green;
+    position: relative;
+    width: 55%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    gap: 1vw;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+}
+
+.testContainer{
+    top: 1.5vh;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }

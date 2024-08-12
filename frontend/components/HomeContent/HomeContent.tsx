@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import styles from './HomeContent.module.css';
 import axios from 'axios';
 import MovieCard from '../MovieCard/MovieCard';
-
+import MovieList from '../MovieList/MovieList';
 
 interface HomeContentProps{
     search: string,
@@ -35,7 +35,12 @@ const HomeContent: React.FC<HomeContentProps> = ({search, userInput}) => {
 
     return (
         <section className={styles.homeContentContainer}>
-            {movieData && (<MovieCard responseObject={movieData.results[0]}></MovieCard>)}
+            {/* {movieData && (<MovieCard responseObject={movieData.results[0]}></MovieCard>)} */}
+            <ul className={styles.movieCardHolder}>
+                {movieData && movieData.results.map((movie, key) => (
+                    <li key={key} className={styles.testContainer}><MovieCard responseObject={movie}></MovieCard></li>
+                ))}
+            </ul>
         </section>
     );
 };
