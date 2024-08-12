@@ -1,0 +1,6 @@
+.movieCardContainer{
+    border: 1px solid red;
+    height: 300px;
+    width: 250px;
+    border-radius: 10px;
+}

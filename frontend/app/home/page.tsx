@@ -38,7 +38,7 @@ const Home = () => {
         <section className="homeContainer">
            <NavBar getUserInput={getUserInput}></NavBar> 
            <HomeNavBar searchQuery={searchQuery}></HomeNavBar>
-           <HomeContent></HomeContent>
+           <HomeContent search={search} userInput={userInput}></HomeContent>
            <Attribution></Attribution>
         </section>
     );
