@@ -6,24 +6,21 @@
 }
 
 .movieCardHolder{
-    border: 1px solid green;
+    padding: 0;
     position: relative;
-    width: 55%;
+    width: auto;
     height: 100%;
     margin-left: auto;
     margin-right: auto;
     list-style: none;
     display: flex;
-    justify-content: space-between;
-    gap: 1vw;
+    gap: 4px;
     flex-wrap: wrap;
-    box-sizing: border-box;
+    justify-content: center;
 }
 
 .testContainer{
-    top: 1.5vh;
-    position: relative;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    position: relative;
 }
