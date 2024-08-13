@@ -18,7 +18,7 @@ interface MovieCardProps{
 
 
 const MovieCard: React.FC<MovieCardProps> = ({responseObject}) => {
-    console.log("RESPONSE OBJECT", responseObject);
+    // console.log("RESPONSE OBJECT", responseObject);
     if(responseObject.media_type === "tv"){
         return null
     }

@@ -13,6 +13,8 @@ interface MovieData{
     results: Array<any>
 }
 
+const BASE_URL = 'https://api.themoviedb.org/3/search/movie';
+
 const HomeContent: React.FC<HomeContentProps> = ({search, userInput}) => {
     const API_KEY = process.env.NEXT_PUBLIC_TMDB_API_KEY;
     const [movieData, setMovieData] = useState<MovieData | null>(null);
@@ -20,9 +22,22 @@ const HomeContent: React.FC<HomeContentProps> = ({search, userInput}) => {
     useEffect(() => {
         const getMoviesInfo = async () => {
             try {
-                const response = await axios.get(`https://api.themoviedb.org/3${search === 'trending'? '/trending/all/week' : '/movie/top_rated'}?api_key=${API_KEY}&language=en-US&page=1`);
-                console.log("Fetched data: ", response);
-                setMovieData(response.data);
+                if (userInput === ''){
+                    const response = await axios.get(`https://api.themoviedb.org/3${search === 'trending'? '/trending/all/week' : '/movie/top_rated'}?api_key=${API_KEY}&language=en-US&page=1`);
+                    console.log("Fetched data: ", response);
+                    setMovieData(response.data);
+                } else {
+                    const response = await axios.get(BASE_URL, {
+                        params: {
+                            api_key: API_KEY,
+                            query: userInput,
+                            page: 1
+                        }
+                    });
+
+                    console.log("Fetched data: ", response);
+                    setMovieData(response.data);
+                }
             } catch(error){
                 console.log("Error getting movie data. ", error);
                 return null;
