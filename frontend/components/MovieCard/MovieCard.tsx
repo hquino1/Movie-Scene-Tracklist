@@ -25,7 +25,6 @@ const MovieCard: React.FC<MovieCardProps> = ({responseObject}) => {
     }
 
     const handleImageLoad = () =>{
-        console.log("IMAGE LOADED");
         setIsLoading(false);
     };
 

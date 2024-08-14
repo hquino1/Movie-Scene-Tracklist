@@ -1,7 +1,7 @@
 'use client'
 import styles from './NavBar.module.css';
 import logoImg from '../../public/assets/Screenshot 2024-08-06 164631.png';
-import searchIcon from '../../public/assets/graySearch.png';
+import searchIcon from '../../public/assets/searchw.png';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 import { useRef } from 'react';
