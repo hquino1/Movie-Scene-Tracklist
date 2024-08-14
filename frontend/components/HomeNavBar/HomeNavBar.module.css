@@ -6,6 +6,7 @@
     background-color: whitesmoke;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
     display: flex;
+    border-bottom: 1px solid #0D93DD;
 }
 
 .ulHomeNav{
@@ -26,9 +27,20 @@
     padding: 5px 5px 5px 5px;
     border-radius: 15px;
     font-weight: bold;
+    font-size: 13px;
 }
 
 .liContainer:hover{
     cursor: pointer;
     background-color: lightgray;
+}
+
+.active{
+    position: relative;
+    margin-top: auto;
+    margin-bottom: auto;
+    padding: 5px 5px 5px 5px;
+    border-radius: 15px;
+    font-weight: bold;
+    color: #0D93DD;
 }

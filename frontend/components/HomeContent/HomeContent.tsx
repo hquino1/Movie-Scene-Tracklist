@@ -53,7 +53,8 @@ const HomeContent: React.FC<HomeContentProps> = ({search, userInput}) => {
             {/* {movieData && (<MovieCard responseObject={movieData.results[0]}></MovieCard>)} */}
             <ul className={styles.movieCardHolder}>
                 {movieData && movieData.results.map((movie, key) => (
-                    <li key={key} className={styles.testContainer}><MovieCard responseObject={movie}></MovieCard></li>
+                    // <li key={key} className={styles.testContainer}><MovieCard responseObject={movie}></MovieCard></li>
+                    <MovieCard responseObject={movie} key={key}></MovieCard>
                 ))}
             </ul>
         </section>

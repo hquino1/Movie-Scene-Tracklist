@@ -6,12 +6,24 @@
     width: 170px;
     border-radius: 10px;
     top: 2vh;
+    border: 2px solid white;
+}
+
+.movieCardContainer:hover{
+    cursor: pointer;
+    border: 2px solid #0D93DD;
 }
 
 .movieImage{
     position: relative;
     border-top-left-radius: 7px;
     border-top-right-radius: 7px;
+    width: auto;
+    right: 0;
+}
+
+.movieImage:hover{
+    width: auto;
 }
 
 .textStyle{

@@ -45,11 +45,7 @@ const NavBar: React.FC<NavBarProps> = ({getUserInput}) => {
             <ul className={styles.ulContainer}>
                 <Link href={'/home'} className={styles.linkContainer}>
                     <li
-                        className={styles.liContainer}
-                        style={{
-                            backgroundColor: pathname === '/home' ? '#0D93DD' : 'transparent',
-                            color: pathname === '/home' ? 'white' : 'black'
-                        }}
+                        className={`${styles.liContainer} ${pathname === '/home' ? styles.active : ''}`}
                         >
                         Home
                     </li>
@@ -57,11 +53,11 @@ const NavBar: React.FC<NavBarProps> = ({getUserInput}) => {
 
                 <Link href={'/likedMovies'} className={styles.linkContainer}>
                     <li
-                    className={styles.liContainer}
-                    style={{
-                        backgroundColor: pathname === '/likedMovies' ? '#0D93DD' : 'transparent',
-                        color: pathname === '/likedMovies' ? 'white' : 'black'
-                    }}
+                    className={`${styles.liContainer} ${pathname === '/likedMovies' ? styles.active : ''}`}
+                    // style={{
+                    //     backgroundColor: pathname === '/likedMovies' ? '#0D93DD' : 'transparent',
+                    //     color: pathname === '/likedMovies' ? 'white' : 'black'
+                    // }}
                     >
                     Liked Movies
                     </li>
@@ -69,12 +65,7 @@ const NavBar: React.FC<NavBarProps> = ({getUserInput}) => {
 
                 <Link href={'/settings'} className={styles.linkContainer}>
                     <li
-                    className={styles.liContainer}
-                    style={{
-                        backgroundColor: pathname === '/settings' ? '#0D93DD' : 'transparent',
-                        color: pathname === '/settings' ? 'white' : 'black'
-                    
-                    }}
+                    className={`${styles.liContainer} ${pathname === '/settings' ? styles.active : ''}`}
                     >
                     Settings
                     </li>
