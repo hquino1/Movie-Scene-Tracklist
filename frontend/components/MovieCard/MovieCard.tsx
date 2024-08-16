@@ -14,16 +14,15 @@ interface MovieData{
     overview: string
 }
 
+
 interface MovieCardProps{
     responseObject: MovieData
 }
 
 
 const MovieCard: React.FC<MovieCardProps> = ({responseObject}) => {
-    const basicInfo = {
-        movieName: responseObject.original_name,
-        moviePoster: responseObject.poster_path,
-    };
+    const movieName = encodeURIComponent(responseObject.original_name || responseObject.original_title);
+    const moviePoster = encodeURIComponent(responseObject.backdrop_path || responseObject.backdrop_path);
     const [isLoading, setIsLoading] = useState(true);
     // console.log("RESPONSE OBJECT", responseObject);
     if(responseObject.media_type === "tv"){
@@ -35,7 +34,7 @@ const MovieCard: React.FC<MovieCardProps> = ({responseObject}) => {
     };
 
     return (
-        <Link href={`/movie/${encodeURI(JSON.stringify(responseObject.original_title))}`}>
+        <Link href={`/movie/${movieName}/${moviePoster}`}>
             <div className={styles.movieCardContainer}>
                 {isLoading && (<Image src={loading.src} width={50} height={50} className={styles.loadingScreen} alt=''></Image>)}
                 <Image src={`https://image.tmdb.org/t/p/original/${responseObject.poster_path || responseObject.backdrop_path}`} alt={""} width={170} height={250} className={styles.movieImage} onLoad={handleImageLoad} onError={() => setIsLoading(true)}></Image>

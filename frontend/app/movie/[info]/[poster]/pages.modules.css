@@ -1,0 +1,31 @@
+.movieInfoContainer{
+  background-color: white;
+  height: 100vh;
+  color: black;
+  display: flex;
+  flex-direction: column;
+}
+
+.movieInfoHeader{
+    position: relative;
+    width: 95%;
+    height: 5%;
+    border: 1px solid black;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    background-color: black;
+    top: 1vh;
+    color: white;
+    text-align: center;
+    font-size: 25px;
+}
+
+.backdropImage{
+    top: 2vh;
+    position: relative;
+    border: 2px solid black;
+    left: 2vw;
+    margin-right: auto;
+    border-radius: 10px;
+}
