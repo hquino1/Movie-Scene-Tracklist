@@ -40,23 +40,44 @@
 
 .soundtrackInfo{
   position: relative;
-  width: 40%;
-  height: 600px;
-  border-radius: 10px;
+  width: 70%;
+  height: auto;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   background-color: rgba(255, 255, 255, 0.95);
   margin-left: auto;
   margin-right: auto;
-  top: 20vh;
+  top: 50vh;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6); 
+  padding: 10px;
+
 }
 
 .soundtrackTitle{
   position: relative;
-  text-align: center;
-  font-size: 20px;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  background-color: white;
+  text-align: left;
+  font-size: 40px;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  background-color: #0D93DD;
-  color: white;
+  color: black;
+  font-family: Arial, Helvetica, sans-serif;
+  left: 1vw;
+  top: 2vh;
+}
+
+.soundtrackSongs{
+  position: relative;
+  height: 50%;
+  width: 40%;
+  top: 3vh;
+  list-style: none;
+  left: 1vw;
+  margin-bottom: 20px;
+}
+
+.song{
+  position: relative;
+  border-bottom: 1px solid gray;
+  padding: 4px;
+  font-family: 15px;
 }
