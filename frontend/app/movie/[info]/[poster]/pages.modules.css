@@ -4,6 +4,8 @@
   color: black;
   display: flex;
   flex-direction: column;
+  overflow: hidden;
+  overflow-y: auto;
 }
 
 .movieInfoHeader{
@@ -28,4 +30,33 @@
     left: 2vw;
     margin-right: auto;
     border-radius: 10px;
+}
+
+.background{
+    background-color: white;
+    position: relative;
+    height: 796px;
+}
+
+.soundtrackInfo{
+  position: relative;
+  width: 40%;
+  height: 600px;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 0.95);
+  margin-left: auto;
+  margin-right: auto;
+  top: 20vh;
+}
+
+.soundtrackTitle{
+  position: relative;
+  text-align: center;
+  font-size: 20px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  background-color: white;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background-color: #0D93DD;
+  color: white;
 }

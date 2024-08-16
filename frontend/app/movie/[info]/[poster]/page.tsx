@@ -28,17 +28,14 @@ const MovieInfo = () => {
     return (
         <section className="movieInfoContainer" >
             <NavBar getUserInput={getUserInput}></NavBar>
-            {/* <header className="movieInfoHeader">
-                {movieName}
-            </header> */}
-            <Image 
-                src={`https://image.tmdb.org/t/p/original${moviePoster}`} 
-                alt={movieName} 
-                width={600}
-                height={350}
-                className="backdropImage"
-            >
-            </Image>
+            <div className="background" style={{ backgroundSize: 'cover', backgroundPosition: 'center', backgroundImage: `linear-gradient(to bottom, rgba(255,255,255,0) 70%, rgba(255,255,255,1)), url(https://image.tmdb.org/t/p/original${moviePoster})`, opacity: '0.85'}}>
+                <div className="soundtrackInfo">
+                    <div className="soundtrackTitle">{movieName}
+                        
+                    </div>
+
+                </div>
+            </div>
 
         </section>
     );
