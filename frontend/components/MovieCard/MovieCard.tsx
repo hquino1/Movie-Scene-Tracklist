@@ -24,7 +24,11 @@ const MovieCard: React.FC<MovieCardProps> = ({responseObject}) => {
     const movieName = encodeURIComponent(responseObject.original_name || responseObject.original_title);
     const moviePoster = encodeURIComponent(responseObject.backdrop_path || responseObject.backdrop_path);
     const [isLoading, setIsLoading] = useState(true);
-    // console.log("RESPONSE OBJECT", responseObject);
+    const date = responseObject.release_date?.split('-').filter(Boolean);
+    if (date){
+        console.log("DATE: ", date[0]);
+    }
+
     if(responseObject.media_type === "tv"){
         return null
     }
@@ -39,7 +43,7 @@ const MovieCard: React.FC<MovieCardProps> = ({responseObject}) => {
                 {isLoading && (<Image src={loading.src} width={50} height={50} className={styles.loadingScreen} alt=''></Image>)}
                 <Image src={`https://image.tmdb.org/t/p/original/${responseObject.poster_path || responseObject.backdrop_path}`} alt={""} width={170} height={250} className={styles.movieImage} onLoad={handleImageLoad} onError={() => setIsLoading(true)}></Image>
                 {!isLoading && <h1 className={styles.textStyle}>{responseObject.original_title || responseObject.original_name}</h1>}
-                {!isLoading && <h2 className={styles.textStyle2}>{responseObject.release_date}</h2>}
+                {!isLoading && <h2 className={styles.textStyle2}>{date[0]}</h2>}
             </div>
         </Link>
     );
