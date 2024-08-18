@@ -23,6 +23,7 @@ interface MovieCardProps{
 const MovieCard: React.FC<MovieCardProps> = ({responseObject}) => {
     const movieName = encodeURIComponent(responseObject.original_name || responseObject.original_title);
     const moviePoster = encodeURIComponent(responseObject.backdrop_path || responseObject.backdrop_path);
+    const movieDate = encodeURIComponent(responseObject.release_date);
     const [isLoading, setIsLoading] = useState(true);
     const date = responseObject.release_date?.split('-').filter(Boolean);
     if (date){
@@ -38,7 +39,7 @@ const MovieCard: React.FC<MovieCardProps> = ({responseObject}) => {
     };
 
     return (
-        <Link href={`/movie/${movieName}/${moviePoster}`}>
+        <Link href={`/movie/${movieName}/${moviePoster}/${movieDate}`}>
             <div className={styles.movieCardContainer}>
                 {isLoading && (<Image src={loading.src} width={50} height={50} className={styles.loadingScreen} alt=''></Image>)}
                 <Image src={`https://image.tmdb.org/t/p/original/${responseObject.poster_path || responseObject.backdrop_path}`} alt={""} width={170} height={250} className={styles.movieImage} onLoad={handleImageLoad} onError={() => setIsLoading(true)}></Image>

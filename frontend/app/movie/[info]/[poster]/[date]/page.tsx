@@ -10,14 +10,19 @@ const MovieInfo = () => {
     const [songs, setSongs] = useState<Song[]>([]);
     const pathname = usePathname();
     const segments = pathname.split('/').filter(Boolean);
-    
     let movieName = '';
     let moviePoster = '';
+    let movieDate = '';
 
     if (segments.length >= 3) {
         // The last two segments are the movie name and poster path
-        movieName = decodeURIComponent(segments[segments.length - 2]);
-        moviePoster = decodeURIComponent(segments[segments.length - 1]);
+        movieName = decodeURIComponent(segments[segments.length - 3]);
+        moviePoster = decodeURIComponent(segments[segments.length - 2]);
+        movieDate = decodeURIComponent(segments[segments.length - 1]);
+        //const yearDate = movieDate?.split('-').filter(Boolean);
+        //movieDate = yearDate[0];
+        movieDate = splitDate(movieDate);
+        console.log("MOVIE DATE: ", movieDate);
     }
 
     const getUserInput = (searchBarInput: string) => {
@@ -57,14 +62,23 @@ const MovieInfo = () => {
 
         const albumData = await response.json();
         console.log(albumData);
+        const choices = albumData.albums.items;
+        //console.log("CHOICES: ", choices);
         let test = albumData.albums.items[0].href;
-        // if (albumData){
-        //     let test;
-        //     for(let i = 0; i < albumData.length; i++){
-
-        //     }
-        // }
-        
+        if (albumData){
+            let mainChoice = choices[0];
+            for(let i = 1; i < choices.length - 1; i++){
+                const year = splitDate(choices[i].release_date);
+                const mainYear = splitDate(mainChoice.release_date);
+                const nextSizeOfSoundtrack = choices[i].total_tracks;
+                const currentSizeOfSoundtrack = mainChoice.total_tracks;
+                if((year === movieDate && mainYear !== movieDate && nextSizeOfSoundtrack > 5) || (year === mainYear && nextSizeOfSoundtrack > currentSizeOfSoundtrack)){
+                    //console.log("NEW CHOICE: ", choices[i].name, " DATE: ", year);
+                    mainChoice = choices[i];
+                    test = choices[i].href;
+                }
+            }
+        }
         await fetch(test, {
             headers: {
                 'Authorization': `Bearer ${accessToken}`,
@@ -79,10 +93,10 @@ const MovieInfo = () => {
         fetchAlbumData(movieName);
     }, [movieName]);
 
-    useEffect(() => {
-        console.log("Updated songs state:", songs);
-    }, [songs]);
-
+    function splitDate(date: string){
+        const year = date?.split('-').filter(Boolean);
+        return year[0];
+    };
 
     interface Song{
         name: string,
