@@ -4,12 +4,14 @@ import './pages.modules.css';
 import Image from 'next/image';
 import NavBar from "@/components/NavBar/NavBar";
 import { useEffect, useState } from "react";
+import spotifyLogo from '../../../../../public/assets/icons8-spotify-logo-24.png';
 
 const MovieInfo = () => {
     const [userInput, setUserInput] = useState('');
     const [songs, setSongs] = useState<Song[]>([]);
     const pathname = usePathname();
     const segments = pathname.split('/').filter(Boolean);
+    const [albumName, setAlbumName] = useState('');
     let movieName = '';
     let moviePoster = '';
     let movieDate = '';
@@ -52,7 +54,7 @@ const MovieInfo = () => {
         
         // Example: Search for album data related to the movie
         const searchQuery = encodeURIComponent(movieName);
-        const apiUrl = `https://api.spotify.com/v1/search?q=${searchQuery}&type=album&genre=soundtrack&year=2024`;
+        const apiUrl = `https://api.spotify.com/v1/search?q=${searchQuery}&type=album&genre=soundtrack&year=${movieDate}`;
 
         const response = await fetch(apiUrl, {
             headers: {
@@ -67,7 +69,7 @@ const MovieInfo = () => {
         let test = albumData.albums.items[0].href;
         if (albumData){
             let mainChoice = choices[0];
-            for(let i = 1; i < choices.length - 1; i++){
+            for(let i = 1; i < choices.length; i++){
                 const year = splitDate(choices[i].release_date);
                 const mainYear = splitDate(mainChoice.release_date);
                 const nextSizeOfSoundtrack = choices[i].total_tracks;
@@ -76,6 +78,7 @@ const MovieInfo = () => {
                     //console.log("NEW CHOICE: ", choices[i].name, " DATE: ", year);
                     mainChoice = choices[i];
                     test = choices[i].href;
+                    setAlbumName(choices[i].name);
                 }
             }
         }
@@ -107,8 +110,13 @@ const MovieInfo = () => {
         <section className="movieInfoContainer" >
             <NavBar getUserInput={getUserInput}></NavBar>
             <div className="background" style={{ backgroundSize: 'cover', backgroundPosition: 'center', backgroundImage: `linear-gradient(to bottom, rgba(255,255,255,0) 70%, rgba(255,255,255,1)), url(https://image.tmdb.org/t/p/original${moviePoster})`, opacity: '0.85'}}>
+                <footer className="warning">* Please note that our service can make mistakes. All info is provided by spotify. <br></br>
+                <a target="_blank" href="https://icons8.com/icon/87050/spotify">Spotify logo</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+                </footer>
                 <div className="soundtrackInfo">
-                    <div className="soundtrackTitle">{movieName}</div>
+                    <div className="soundtrackTitle">{movieName}
+                        <img src={spotifyLogo.src} className="spotifyLogo"></img>
+                    </div>
                     <ul className="soundtrackSongs">
                         {songs && songs.map((song, key) => (
                             <li key={key} className="song">{song.track_number}. {song.name}</li>
