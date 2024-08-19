@@ -5,12 +5,14 @@ import Image from 'next/image';
 import NavBar from "@/components/NavBar/NavBar";
 import { useEffect, useState } from "react";
 import spotifyLogo from '../../../../../public/assets/icons8-spotify-logo-24.png';
+import Link from 'next/link';
 
 const MovieInfo = () => {
     const [userInput, setUserInput] = useState('');
     const [songs, setSongs] = useState<Song[]>([]);
     const pathname = usePathname();
     const segments = pathname.split('/').filter(Boolean);
+    const [spotifyLink, setSpotifyLink] = useState('');
     const [albumName, setAlbumName] = useState('');
     let movieName = '';
     let moviePoster = '';
@@ -67,6 +69,7 @@ const MovieInfo = () => {
         const choices = albumData.albums.items;
         //console.log("CHOICES: ", choices);
         let test = albumData.albums.items[0].href;
+        setSpotifyLink(albumData.albums.items[0].external_urls.spotify);
         if (albumData){
             let mainChoice = choices[0];
             for(let i = 1; i < choices.length; i++){
@@ -78,6 +81,7 @@ const MovieInfo = () => {
                     //console.log("NEW CHOICE: ", choices[i].name, " DATE: ", year);
                     mainChoice = choices[i];
                     test = choices[i].href;
+                    setSpotifyLink(choices[i].external_urls.spotify);
                     setAlbumName(choices[i].name);
                 }
             }
@@ -110,12 +114,12 @@ const MovieInfo = () => {
         <section className="movieInfoContainer" >
             <NavBar getUserInput={getUserInput}></NavBar>
             <div className="background" style={{ backgroundSize: 'cover', backgroundPosition: 'center', backgroundImage: `linear-gradient(to bottom, rgba(255,255,255,0) 70%, rgba(255,255,255,1)), url(https://image.tmdb.org/t/p/original${moviePoster})`, opacity: '0.85'}}>
-                <footer className="warning">* Please note that our service can make mistakes. All info is provided by spotify. <br></br>
-                <a target="_blank" href="https://icons8.com/icon/87050/spotify">Spotify logo</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
-                </footer>
                 <div className="soundtrackInfo">
                     <div className="soundtrackTitle">{movieName}
-                        <img src={spotifyLogo.src} className="spotifyLogo"></img>
+                        <Link href={spotifyLink}><img src={spotifyLogo.src} className="spotifyLogo"></img></Link>
+                        <footer className="warning">* Please note that our service can make mistakes. All info is provided by spotify. <br></br>
+                            <a target="_blank" href="https://icons8.com/icon/87050/spotify">Spotify logo</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+                        </footer>
                     </div>
                     <ul className="soundtrackSongs">
                         {songs && songs.map((song, key) => (
