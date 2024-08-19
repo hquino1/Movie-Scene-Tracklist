@@ -56,7 +56,7 @@ const MovieInfo = () => {
         
         // Example: Search for album data related to the movie
         const searchQuery = encodeURIComponent(movieName);
-        const apiUrl = `https://api.spotify.com/v1/search?q=${searchQuery}&type=album&genre=soundtrack&year=${movieDate}`;
+        const apiUrl = `https://api.spotify.com/v1/search?q=${searchQuery}&type=album&genre=soundtrack&year=${movieDate}&limit=30`;
 
         const response = await fetch(apiUrl, {
             headers: {
