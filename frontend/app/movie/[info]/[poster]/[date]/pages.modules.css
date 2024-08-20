@@ -120,15 +120,13 @@
 }
 
 .addCommentImg{
-  position: absolute;
-  left: 5vw;
-  border: 1px solid red;
-  height: 35px;
+  position: relative;
+  height: 100%;
+  float: right;
 }
 
 .addCommentContainer{
   position: relative;
-  border: 1px solid blue;
-  height: 50px;
+  height: 30px;
   width: 100%;
 }

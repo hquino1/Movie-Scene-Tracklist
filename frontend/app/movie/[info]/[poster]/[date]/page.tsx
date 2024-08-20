@@ -16,6 +16,7 @@ const MovieInfo = () => {
     const segments = pathname.split('/').filter(Boolean);
     const [spotifyLink, setSpotifyLink] = useState('');
     const [albumName, setAlbumName] = useState('');
+    const [giveRating, setGiveRating] = useState(false);
     let movieName = '';
     let moviePoster = '';
     let movieDate = '';
@@ -130,8 +131,8 @@ const MovieInfo = () => {
                             ))}
                         </ul>
                         <div className="usersOpinion">
-                            <span className="addCommentContainer"><img src={addCommentImg.src} className="addCommentImg"></img></span>
-                            <UserRating></UserRating>
+                            {!giveRating && <div className="addCommentContainer"><img src={addCommentImg.src} className="addCommentImg" onClick={() => setGiveRating(true)}></img></div>}
+                            {giveRating && <UserRating></UserRating>}
                         </div>
                     </div>
 

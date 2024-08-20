@@ -32,3 +32,80 @@
     height: 100px;
 }
 
+.backgroundContainer{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: lightgray;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.movieTitle{
+    position: relative;
+    top: 2vh;
+    font-size: 17px;
+    text-align: center;
+}
+
+.usernameInput{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid red;
+    text-align: center;
+}
+
+.usernameInputName{
+    justify-content: center;
+}
+
+.usernameInputBox{
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 5px;
+    width: 50%;
+    padding: 3px;
+    color: black;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.starRatingContainer{
+    position: relative;
+    border: 1px solid blue;
+    height: 50px;
+    top: 3vh;
+}
+
+.ratingForm{
+    position: relative;
+    border: 1px solid black;
+    top: 3vh;
+    height: 80%;
+}
+
+.ratingDecision{
+    top: 3vh;
+    position: relative;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 1vw;
+}
+
+.ratingButton{
+    position: relative;
+    background-color: white;
+    width: 70px;
+    color: black;
+    padding: 2px;
+    border-radius: 5px;
+    border: 0.5px solid black;
+}
+
+.ratingButton:hover{
+    cursor: pointer;
+    background-color: gray;
+}
