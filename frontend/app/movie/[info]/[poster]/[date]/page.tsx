@@ -5,6 +5,7 @@ import Image from 'next/image';
 import NavBar from "@/components/NavBar/NavBar";
 import { useEffect, useState } from "react";
 import spotifyLogo from '../../../../../public/assets/icons8-spotify-logo-24.png';
+import UserRating from "@/components/UserRating/UserRating";
 import Link from 'next/link';
 
 const MovieInfo = () => {
@@ -121,11 +122,17 @@ const MovieInfo = () => {
                             <a target="_blank" href="https://icons8.com/icon/87050/spotify">Spotify logo</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
                         </footer>
                     </div>
-                    <ul className="soundtrackSongs">
-                        {songs && songs.map((song, key) => (
-                            <li key={key} className="song">{song.track_number}. {song.name}</li>
-                        ))}
-                    </ul>
+                    <div className="middleContent">
+                        <ul className="soundtrackSongs">
+                            {songs && songs.map((song, key) => (
+                                <li key={key} className="song">{song.track_number}. {song.name}</li>
+                            ))}
+                        </ul>
+                        <div className="usersOpinion">
+                            <UserRating></UserRating>
+                        </div>
+                    </div>
+
 
                 </div>
             </div>
