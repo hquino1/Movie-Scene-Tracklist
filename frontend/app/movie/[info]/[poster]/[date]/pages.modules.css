@@ -118,3 +118,17 @@
 .middleContent{
   display: flex;
 }
+
+.addCommentImg{
+  position: absolute;
+  left: 5vw;
+  border: 1px solid red;
+  height: 35px;
+}
+
+.addCommentContainer{
+  position: relative;
+  border: 1px solid blue;
+  height: 50px;
+  width: 100%;
+}

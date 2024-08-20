@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import spotifyLogo from '../../../../../public/assets/icons8-spotify-logo-24.png';
 import UserRating from "@/components/UserRating/UserRating";
 import Link from 'next/link';
+import addCommentImg from '@/public/assets/addCircleW.png';
 
 const MovieInfo = () => {
     const [userInput, setUserInput] = useState('');
@@ -118,7 +119,7 @@ const MovieInfo = () => {
                 <div className="soundtrackInfo">
                     <div className="soundtrackTitle">{movieName}
                         <Link href={spotifyLink}><img src={spotifyLogo.src} className="spotifyLogo"></img></Link>
-                        <footer className="warning">* Please note that our service can make mistakes. All info is provided by spotify. <br></br>
+                        <footer className="warning">* Please note that our service can make mistakes. All info is provided by spotify. <br />
                             <a target="_blank" href="https://icons8.com/icon/87050/spotify">Spotify logo</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
                         </footer>
                     </div>
@@ -129,6 +130,7 @@ const MovieInfo = () => {
                             ))}
                         </ul>
                         <div className="usersOpinion">
+                            <span className="addCommentContainer"><img src={addCommentImg.src} className="addCommentImg"></img></span>
                             <UserRating></UserRating>
                         </div>
                     </div>
