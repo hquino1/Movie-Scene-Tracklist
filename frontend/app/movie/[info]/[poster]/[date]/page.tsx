@@ -132,7 +132,7 @@ const MovieInfo = () => {
                         </ul>
                         <div className="usersOpinion">
                             {!giveRating && <div className="addCommentContainer"><img src={addCommentImg.src} className="addCommentImg" onClick={() => setGiveRating(true)}></img></div>}
-                            {giveRating && <UserRating></UserRating>}
+                            {giveRating && <UserRating giveRating={giveRating} setGiveRating={setGiveRating}></UserRating>}
                         </div>
                     </div>
 
