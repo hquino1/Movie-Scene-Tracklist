@@ -118,13 +118,18 @@
     margin-right: auto;
     list-style: none;
     display: flex;
-    border: 1px solid blue;
+    top: 50%;
+    transform: translateY(50%);
 }
 
 .starImg{
     position: relative;
     height: 35px;
     justify-content: center;
+}
+
+.starImg:hover{
+    cursor: pointer;
 }
 
 .userCommentArea{
