@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './UserRating.module.css';
 import star from '@/public/assets/gradeStar.png';
 import starYellow from '@/public/assets/gradeStarYellow.png';
@@ -18,6 +18,10 @@ const UserRating: React.FC<RatingProps> = ({giveRating, setGiveRating, movieName
     const [starColor5, setStarColor5] = useState(false);
     const [score, setScore] = useState(0);
 
+    useEffect(() => {
+        console.log("SCORE UPDATE: ", score);
+    }, [score]);
+
     return (
         <div className={styles.backgroundContainer}>
             <h2 className={styles.movieTitle}>{movieName}</h2>
@@ -28,20 +32,20 @@ const UserRating: React.FC<RatingProps> = ({giveRating, setGiveRating, movieName
                 </div>
                 <div className={styles.starRatingContainer}>
                     <ul className={styles.starsUl}>
-                        {(!starColor1 && !starColor2 && !starColor3 && !starColor4 && !starColor5) && <img src={star.src} className={styles.starImg} onClick={() => setStarColor1(true)}></img>}
+                        {(!starColor1 && !starColor2 && !starColor3 && !starColor4 && !starColor5) && <img src={star.src} className={styles.starImg} onClick={() => {setStarColor1(true); setScore(1)}}></img>}
                         {(starColor1 || starColor2 || starColor3 || starColor4 || starColor5) && <img src={starYellow.src} className={styles.starImg} onClick={() => setStarColor1(false)}></img>}
 
-                        {(!starColor2 && !starColor3 && !starColor4 && !starColor5) && <img src={star.src} className={styles.starImg} onClick={() => setStarColor2(true)}></img>}
+                        {(!starColor2 && !starColor3 && !starColor4 && !starColor5) && <img src={star.src} className={styles.starImg} onClick={() => {setStarColor2(true); setScore(2)}}></img>}
                         {(starColor2 || starColor3 || starColor4 || starColor5) && <img src={starYellow.src} className={styles.starImg} onClick={() => setStarColor2(false)}></img>}
 
-                        {(!starColor3 && !starColor4 && !starColor5) && <img src={star.src} className={styles.starImg} onClick={() => setStarColor3(true)}></img>}
+                        {(!starColor3 && !starColor4 && !starColor5) && <img src={star.src} className={styles.starImg} onClick={() => {setStarColor3(true); setScore(3)}}></img>}
                         {(starColor3 || starColor4 || starColor5) && <img src={starYellow.src} className={styles.starImg} onClick={() => setStarColor3(false)}></img>}
 
-                        {(!starColor4 && !starColor5) && <img src={star.src} className={styles.starImg} onClick={() => setStarColor4(true)}></img>}
+                        {(!starColor4 && !starColor5) && <img src={star.src} className={styles.starImg} onClick={() => {setStarColor4(true); setScore(4)}}></img>}
                         {(starColor4 || starColor5) && <img src={starYellow.src} className={styles.starImg} onClick={() => setStarColor4(false)}></img>}
 
-                        {(!starColor5) && <img src={star.src} className={styles.starImg} onClick={() => setStarColor5(true)}></img>}
-                        {(starColor5) && <img src={starYellow.src} className={styles.starImg} onClick={() => setStarColor5(false)}></img>}
+                        {(!starColor5) && <img src={star.src} className={styles.starImg} onClick={() => {setStarColor5(true); setScore(5)}}></img>}
+                        {(starColor5) && <img src={starYellow.src} className={styles.starImg} onClick={() => {setStarColor5(false)}}></img>}
                     </ul>
                 </div>
                 <div className={styles.textAreaContainer}><textarea className={styles.userCommentArea} placeholder='Share details of your experience for this movie'></textarea></div>
