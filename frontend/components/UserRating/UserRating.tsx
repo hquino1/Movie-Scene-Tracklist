@@ -1,7 +1,9 @@
-import { useEffect, useState } from 'react';
+import { ButtonHTMLAttributes, useEffect, useState } from 'react';
 import styles from './UserRating.module.css';
 import star from '@/public/assets/gradeStar.png';
 import starYellow from '@/public/assets/gradeStarYellow.png';
+import { db } from '../../app/firebase/config'; 
+import { addDoc, collection } from 'firebase/firestore';
 
 interface RatingProps{
     giveRating: boolean;
@@ -16,19 +18,40 @@ const UserRating: React.FC<RatingProps> = ({giveRating, setGiveRating, movieName
     const [starColor3, setStarColor3] = useState(false);
     const [starColor4, setStarColor4] = useState(false);
     const [starColor5, setStarColor5] = useState(false);
+    const [userReview, setUserReview] = useState("");
+    const [userReviewName, setUserReviewName] = useState("");
     const [score, setScore] = useState(0);
 
     useEffect(() => {
         console.log("SCORE UPDATE: ", score);
     }, [score]);
 
+    const handleSubmit = async (event: any) => {
+        event.preventDefault();
+        try{
+            await addDoc(collection(db, "reviews"), {
+                movieName,
+                date: new Date(),
+                userReviewName,
+                score,
+                userReview
+            });
+            setUserReview("");
+            setScore(0);
+            setUserReviewName("");
+            console.log("SUCCESSFUL RATING ENTRY");
+        } catch (error){
+            console.log("Error processing user rating.", error);
+        };
+    };
+
     return (
         <div className={styles.backgroundContainer}>
             <h2 className={styles.movieTitle}>{movieName}</h2>
-            <form className={styles.ratingForm}>
+            <form className={styles.ratingForm} onSubmit={handleSubmit}>
                 <div className={styles.usernameInput}>
                     <label className={styles.usernameInputName}>Name:</label>
-                    <input className={styles.usernameInputBox}></input>
+                    <input className={styles.usernameInputBox} value={userReviewName} onChange={(e) => setUserReviewName(e.target.value)}></input>
                 </div>
                 <div className={styles.starRatingContainer}>
                     <ul className={styles.starsUl}>
@@ -48,12 +71,12 @@ const UserRating: React.FC<RatingProps> = ({giveRating, setGiveRating, movieName
                         {(starColor5) && <img src={starYellow.src} className={styles.starImg} onClick={() => {setStarColor5(false)}}></img>}
                     </ul>
                 </div>
-                <div className={styles.textAreaContainer}><textarea className={styles.userCommentArea} placeholder='Share details of your experience for this movie'></textarea></div>
+                <div className={styles.textAreaContainer}><textarea className={styles.userCommentArea} placeholder='Share details of your experience for this movie' value={userReview} onChange={(e) => setUserReview(e.target.value)}></textarea></div>
+                <div className={styles.ratingDecision}>
+                    <button className={styles.ratingButton} onClick={() => setGiveRating(false)}>Cancel</button>
+                    <button className={styles.ratingButton} type='submit'>Submit</button>
+                </div>
             </form>
-            <div className={styles.ratingDecision}>
-                <button className={styles.ratingButton} onClick={() => setGiveRating(false)}>Cancel</button>
-                <button className={styles.ratingButton}>Submit</button>
-            </div>
         </div>
     );
 };
