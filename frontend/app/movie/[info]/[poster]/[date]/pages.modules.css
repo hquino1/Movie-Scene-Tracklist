@@ -132,3 +132,8 @@
   height: 30px;
   width: 100%;
 }
+
+.entireRatingContainer{
+  position: relative;
+  height: 100%;
+}

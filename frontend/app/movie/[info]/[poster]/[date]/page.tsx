@@ -8,6 +8,7 @@ import spotifyLogo from '../../../../../public/assets/icons8-spotify-logo-24.png
 import UserRating from "@/components/UserRating/UserRating";
 import Link from 'next/link';
 import addCommentImg from '@/public/assets/addCircleW.png';
+import MovieRating from "@/components/MovieRating/MovieRating";
 
 const MovieInfo = () => {
     const [userInput, setUserInput] = useState('');
@@ -131,7 +132,11 @@ const MovieInfo = () => {
                             ))}
                         </ul>
                         <div className="usersOpinion">
-                            {!giveRating && <div className="addCommentContainer"><img src={addCommentImg.src} className="addCommentImg" onClick={() => setGiveRating(true)}></img></div>}
+                            {!giveRating && <div className="entireRatingContainer">
+                                <div className="addCommentContainer"><img src={addCommentImg.src} className="addCommentImg" onClick={() => setGiveRating(true)}></img></div>
+                                <MovieRating></MovieRating>
+                                </div>
+                            }
                             {giveRating && <UserRating giveRating={giveRating} setGiveRating={setGiveRating} movieName={movieName}></UserRating>}
                         </div>
                     </div>
