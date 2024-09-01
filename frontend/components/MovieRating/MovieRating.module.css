@@ -16,3 +16,25 @@
     height: 20%;
     display: flex;
 }
+
+.personIcon{
+    position: absolute;
+    left: 11vw;
+    height: 32px;
+}
+
+.star{
+    position: relative;
+    height: 26px;
+}
+
+.barOutline{
+    position: absolute;
+    border: 1px solid blue;
+    right: 2vw;
+    height: 75%;
+    width: 50%;
+    border-radius: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+}

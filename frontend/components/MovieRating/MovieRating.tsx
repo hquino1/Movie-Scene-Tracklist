@@ -2,6 +2,8 @@ import styles from './MovieRating.module.css';
 import { db } from '@/app/firebase/config';
 import { doc, collection, getDoc } from 'firebase/firestore';
 import { useEffect } from 'react';
+import personIcon from '@/public/assets/bPersonIcon.png';
+import star from '@/public/assets/icons8-star-48.png';
 
 const MovieRating = () =>{
 
@@ -22,11 +24,51 @@ const MovieRating = () =>{
     return (
         <div className={styles.movieRatingContainer}>
             <div className={styles.allRatings}>
-                <div className={styles.componentRating}></div>
-                <div className={styles.componentRating}></div>
-                <div className={styles.componentRating}></div>
-                <div className={styles.componentRating}></div>
-                <div className={styles.componentRating}></div>
+                <div className={styles.componentRating}>
+                    <span>
+                        <img src={star.src} className={styles.star}></img>
+                        <img src={star.src} className={styles.star}></img>
+                        <img src={star.src} className={styles.star}></img>
+                        <img src={star.src} className={styles.star}></img>
+                        <img src={star.src} className={styles.star}></img>
+                    </span>
+                    <img src={personIcon.src} className={styles.personIcon}></img>
+                    <div className={styles.barOutline}><div style={{position: 'relative', height: '100%', width: '50%', backgroundColor: 'black'}}></div></div>
+                </div>
+                <div className={styles.componentRating}>
+                    <span>
+                        <img src={star.src} className={styles.star}></img>
+                        <img src={star.src} className={styles.star}></img>
+                        <img src={star.src} className={styles.star}></img>
+                        <img src={star.src} className={styles.star}></img>
+                    </span>
+                    <img src={personIcon.src} className={styles.personIcon}></img>
+                    <div className={styles.barOutline}><div style={{position: 'relative', height: '100%', width: '50%', backgroundColor: 'black'}}></div></div>
+                </div>
+                <div className={styles.componentRating}>
+                    <span>
+                        <img src={star.src} className={styles.star}></img>
+                        <img src={star.src} className={styles.star}></img>
+                        <img src={star.src} className={styles.star}></img>
+                    </span>
+                    <img src={personIcon.src} className={styles.personIcon}></img>
+                    <div className={styles.barOutline}><div style={{position: 'relative', height: '100%', width: '50%', backgroundColor: 'black'}}></div></div>
+                </div>
+                <div className={styles.componentRating}>
+                    <span>
+                        <img src={star.src} className={styles.star}></img>
+                        <img src={star.src} className={styles.star}></img>
+                    </span>
+                    <img src={personIcon.src} className={styles.personIcon}></img>
+                    <div className={styles.barOutline}><div style={{position: 'relative', height: '100%', width: '50%', backgroundColor: 'black'}}></div></div>
+                </div>
+                <div className={styles.componentRating}>
+                    <span>
+                        <img src={star.src} className={styles.star}></img>
+                    </span>
+                    <img src={personIcon.src} className={styles.personIcon}></img>
+                    <div className={styles.barOutline}><div style={{position: 'relative', height: '100%', width: '50%', backgroundColor: 'black'}}></div></div>
+                </div>
             </div>
         </div>
     );
