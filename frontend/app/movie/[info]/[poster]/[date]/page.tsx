@@ -18,6 +18,7 @@ const MovieInfo = () => {
     const [spotifyLink, setSpotifyLink] = useState('');
     const [albumName, setAlbumName] = useState('');
     const [giveRating, setGiveRating] = useState(false);
+    const [avgScore, setAvgScore] = useState(0);
     let movieName = '';
     let moviePoster = '';
     let movieDate = '';
@@ -114,6 +115,10 @@ const MovieInfo = () => {
         track_number: string,
     }
 
+    const getAvgScore = (score: number) =>{
+        setAvgScore(score);
+    };
+
     return (
         <section className="movieInfoContainer" >
             <NavBar getUserInput={getUserInput}></NavBar>
@@ -133,8 +138,8 @@ const MovieInfo = () => {
                         </ul>
                         <div className="usersOpinion">
                             {!giveRating && <div className="entireRatingContainer">
-                                <div className="addCommentContainer"><img src={addCommentImg.src} className="addCommentImg" onClick={() => setGiveRating(true)}></img></div>
-                                <MovieRating movieName={movieName}></MovieRating>
+                                <div className="addCommentContainer">Average Score: {avgScore}<img src={addCommentImg.src} className="addCommentImg" onClick={() => setGiveRating(true)}></img></div>
+                                <MovieRating movieName={movieName} getAvgScore={getAvgScore}></MovieRating>
                                 </div>
                             }
                             {giveRating && <UserRating giveRating={giveRating} setGiveRating={setGiveRating} movieName={movieName}></UserRating>}

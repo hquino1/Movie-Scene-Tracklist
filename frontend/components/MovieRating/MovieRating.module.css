@@ -38,3 +38,12 @@
     top: 50%;
     transform: translateY(-50%);
 }
+
+.barAmount{
+    position: absolute;
+    color: white;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    left: 0.3vw;
+}
