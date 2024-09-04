@@ -1,18 +1,18 @@
 .movieRatingContainer{
-    border: 1px solid green;
     position: relative;
     height: 93%;
 }
 
 .allRatings{
+    border-top: 1px solid darkgray;
     position: relative;
-    border: 1px solid blue;
-    height: 45%;
+    height: 35%;
+    border-bottom: 1px solid darkgray;
+    padding: 5px;
 }
 
 .componentRating{
     position: relative;
-    border: 1px solid red;
     height: 20%;
     display: flex;
 }
@@ -20,7 +20,7 @@
 .personIcon{
     position: absolute;
     left: 11vw;
-    height: 32px;
+    height: 24px;
 }
 
 .star{
@@ -30,18 +30,18 @@
 
 .barOutline{
     position: absolute;
-    border: 1px solid blue;
+    border: 1px solid black;
     right: 2vw;
     height: 75%;
     width: 50%;
-    border-radius: 5px;
+    border-radius: 10px;
     top: 50%;
     transform: translateY(-50%);
 }
 
 .barAmount{
     position: absolute;
-    color: white;
+    color: black;
     top: 50%;
     transform: translateY(-50%);
     font-size: 14px;

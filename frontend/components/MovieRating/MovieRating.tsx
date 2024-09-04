@@ -3,7 +3,7 @@ import { db } from '@/app/firebase/config';
 import { doc, collection, getDocs, query, where } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 import personIcon from '@/public/assets/bPersonIcon.png';
-import star from '@/public/assets/icons8-star-48.png';
+import star from '@/public/assets/icons8-star-100.png';
 
 
 interface ratingData{
@@ -23,6 +23,7 @@ interface movieRatingProps{
 const MovieRating: React.FC<movieRatingProps> = ({movieName, getAvgScore}) =>{
     const [ratings, setRatings] = useState([]);
     const [avgRating, setAvgRating] = useState(0);
+    const [isDataAvailable, setIsDataAvailable] = useState(false);
     const [amountOfReviews, setAmountOfReviews] = useState(0);
     const [ratingCounts, setRatingCounts] = useState<Map<number, number>>(new Map([
         [1, 0],
@@ -44,6 +45,7 @@ const MovieRating: React.FC<movieRatingProps> = ({movieName, getAvgScore}) =>{
             });
 
             if(allData.length >= 0){
+                setIsDataAvailable(true);
                 setAmountOfReviews(allData.length);
                 let sumOfRatings = 0;                
                 let tempMap = new Map<number, number>([
@@ -84,7 +86,7 @@ const MovieRating: React.FC<movieRatingProps> = ({movieName, getAvgScore}) =>{
                         <img src={star.src} className={styles.star}></img>
                     </span>
                     <img src={personIcon.src} className={styles.personIcon}></img>
-                    <div className={styles.barOutline}><div style={{position: 'relative', height: '100%', width: `${(ratingCounts.get(5)! / amountOfReviews) * 100}%`, backgroundColor: 'black'}}></div><p className={styles.barAmount}>{ratingCounts.get(5)}</p></div>
+                    <div className={styles.barOutline}><div style={{position: 'relative', height: '100%', width: `${(ratingCounts.get(5)! / amountOfReviews) * 100}%`, backgroundColor: 'green', borderRadius: '8.5px'}}></div><p className={styles.barAmount}>{ratingCounts.get(5)}</p></div>
                 </div>
                 <div className={styles.componentRating}>
                     <span>
@@ -94,7 +96,7 @@ const MovieRating: React.FC<movieRatingProps> = ({movieName, getAvgScore}) =>{
                         <img src={star.src} className={styles.star}></img>
                     </span>
                     <img src={personIcon.src} className={styles.personIcon}></img>
-                    <div className={styles.barOutline}><div style={{position: 'relative', height: '100%', width: '50%', backgroundColor: 'black'}}></div></div>
+                    <div className={styles.barOutline}><div style={{position: 'relative', height: '100%', width: `${(ratingCounts.get(4)! / amountOfReviews) * 100}%`, backgroundColor: 'lawngreen', borderRadius: '8.5px'}}></div><p className={styles.barAmount}>{ratingCounts.get(4)}</p></div>
                 </div>
                 <div className={styles.componentRating}>
                     <span>
@@ -103,7 +105,7 @@ const MovieRating: React.FC<movieRatingProps> = ({movieName, getAvgScore}) =>{
                         <img src={star.src} className={styles.star}></img>
                     </span>
                     <img src={personIcon.src} className={styles.personIcon}></img>
-                    <div className={styles.barOutline}><div style={{position: 'relative', height: '100%', width: '50%', backgroundColor: 'black'}}></div></div>
+                    <div className={styles.barOutline}><div style={{position: 'relative', height: '100%', width: `${(ratingCounts.get(3)! / amountOfReviews) * 100}%`, backgroundColor: 'yellow', borderRadius: '8.5px'}}></div><p className={styles.barAmount}>{ratingCounts.get(3)}</p></div>
                 </div>
                 <div className={styles.componentRating}>
                     <span>
@@ -111,16 +113,17 @@ const MovieRating: React.FC<movieRatingProps> = ({movieName, getAvgScore}) =>{
                         <img src={star.src} className={styles.star}></img>
                     </span>
                     <img src={personIcon.src} className={styles.personIcon}></img>
-                    <div className={styles.barOutline}>{ratingCounts.get(1)}<div style={{position: 'relative', height: '100%', width: '50%', backgroundColor: 'black'}}></div></div>
+                    <div className={styles.barOutline}><div style={{position: 'relative', height: '100%', width: `${(ratingCounts.get(2)! / amountOfReviews) * 100}%`, backgroundColor: 'orange', borderRadius: '8.5px'}}></div><p className={styles.barAmount}>{ratingCounts.get(2)}</p></div>
                 </div>
                 <div className={styles.componentRating}>
                     <span>
                         <img src={star.src} className={styles.star}></img>
                     </span>
                     <img src={personIcon.src} className={styles.personIcon}></img>
-                    <div className={styles.barOutline}><div style={{position: 'relative', height: '100%', width: '50%', backgroundColor: 'black'}}></div></div>
+                    <div className={styles.barOutline}><div style={{position: 'relative', height: '100%', width: `${(ratingCounts.get(1)! / amountOfReviews) * 100}%`, backgroundColor: 'red', borderRadius: '8.5px'}}></div><p className={styles.barAmount}>{ratingCounts.get(1)}</p></div>
                 </div>
             </div>
+            <div>Comment</div>
         </div>
     );
 };
