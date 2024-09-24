@@ -1,15 +1,15 @@
 import styles from './MovieRating.module.css';
 import { db } from '@/app/firebase/config';
-import { doc, collection, getDocs, query, where } from 'firebase/firestore';
+import { doc, collection, getDocs, query, where, Timestamp } from 'firebase/firestore';
 import { useEffect, useState } from 'react';
 import personIcon from '@/public/assets/bPersonIcon.png';
 import star from '@/public/assets/icons8-star-100.png';
-
+import UserCommentDisplay from '../UserCommentDisplay/UserCommentDisplay';
 
 interface ratingData{
     movieName: string,
     userReview: string,
-    date: string,
+    date: Timestamp,
     score: string,
     userReviewName: string
 }
@@ -23,6 +23,7 @@ interface movieRatingProps{
 const MovieRating: React.FC<movieRatingProps> = ({movieName, getAvgScore}) =>{
     const [ratings, setRatings] = useState([]);
     const [avgRating, setAvgRating] = useState(0);
+    const [recentComments, setRecentComments] = useState<ratingData[]>([]);
     const [isDataAvailable, setIsDataAvailable] = useState(false);
     const [amountOfReviews, setAmountOfReviews] = useState(0);
     const [ratingCounts, setRatingCounts] = useState<Map<number, number>>(new Map([
@@ -56,6 +57,11 @@ const MovieRating: React.FC<movieRatingProps> = ({movieName, getAvgScore}) =>{
                     [5, 0]
                 ]);
                 allData.forEach(review => {
+                    if(recentComments.length < 5){
+                        setRecentComments([...recentComments, review]);
+                        //const date = new Date(review.date.seconds);
+                        console.log("REVIEW ARRAY: ", review.userReviewName);
+                    }
                     const key = parseInt(review.score);
                     sumOfRatings += key;
                     if (tempMap.has(key)){
@@ -123,7 +129,8 @@ const MovieRating: React.FC<movieRatingProps> = ({movieName, getAvgScore}) =>{
                     <div className={styles.barOutline}><div style={{position: 'relative', height: '100%', width: `${(ratingCounts.get(1)! / amountOfReviews) * 100}%`, backgroundColor: 'red', borderRadius: '8.5px'}}></div><p className={styles.barAmount}>{ratingCounts.get(1)}</p></div>
                 </div>
             </div>
-            <div>Comment</div>
+            {isDataAvailable && <UserCommentDisplay></UserCommentDisplay>}
+            {!isDataAvailable && <div>No Data is currently Available. Be the first to comment and rate!</div>}
         </div>
     );
 };

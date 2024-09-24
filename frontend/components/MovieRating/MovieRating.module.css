@@ -1,6 +1,8 @@
 .movieRatingContainer{
     position: relative;
     height: 93%;
+    display: flex;
+    flex-direction: column;
 }
 
 .allRatings{
@@ -46,4 +48,17 @@
     transform: translateY(-50%);
     font-size: 14px;
     left: 0.3vw;
+}
+
+.commentContainer{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+    position: relative;
+    height: 60%;
+    width: 95%;
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid gray;
 }
