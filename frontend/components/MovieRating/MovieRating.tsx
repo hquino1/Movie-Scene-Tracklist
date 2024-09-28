@@ -22,6 +22,7 @@ interface movieRatingProps{
 
 const MovieRating: React.FC<movieRatingProps> = ({movieName, getAvgScore}) =>{
     const [ratings, setRatings] = useState([]);
+    //let newRecentComments: ratingData[] = [];
     const [avgRating, setAvgRating] = useState(0);
     const [recentComments, setRecentComments] = useState<ratingData[]>([]);
     const [isDataAvailable, setIsDataAvailable] = useState(false);
@@ -56,9 +57,11 @@ const MovieRating: React.FC<movieRatingProps> = ({movieName, getAvgScore}) =>{
                     [4, 0],
                     [5, 0]
                 ]);
+                let newRecentComments: ratingData[] = [];
+
                 allData.forEach(review => {
                     if(recentComments.length < 5){
-                        setRecentComments([...recentComments, review]);
+                        newRecentComments.push(review);
                         //const date = new Date(review.date.seconds);
                         console.log("REVIEW ARRAY: ", review.userReviewName);
                     }
@@ -68,6 +71,7 @@ const MovieRating: React.FC<movieRatingProps> = ({movieName, getAvgScore}) =>{
                         tempMap.set(key, tempMap.get(key)! + 1); 
                     }
                 });
+                setRecentComments(newRecentComments);
                 console.log("SUM:", sumOfRatings);
                 setRatingCounts(tempMap); 
                 //setAvgRating(sumOfRatings/allData.length);
@@ -129,7 +133,7 @@ const MovieRating: React.FC<movieRatingProps> = ({movieName, getAvgScore}) =>{
                     <div className={styles.barOutline}><div style={{position: 'relative', height: '100%', width: `${(ratingCounts.get(1)! / amountOfReviews) * 100}%`, backgroundColor: 'red', borderRadius: '8.5px'}}></div><p className={styles.barAmount}>{ratingCounts.get(1)}</p></div>
                 </div>
             </div>
-            {isDataAvailable && <UserCommentDisplay></UserCommentDisplay>}
+            {isDataAvailable && <UserCommentDisplay reviews={recentComments}></UserCommentDisplay>}
             {!isDataAvailable && <div>No Data is currently Available. Be the first to comment and rate!</div>}
         </div>
     );

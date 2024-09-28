@@ -62,3 +62,9 @@
     border-radius: 5px;
     border: 1px solid gray;
 }
+
+.uncheckedCircle{
+    position: relative;
+    height: 10px;
+    border: 1px solid green;
+}
