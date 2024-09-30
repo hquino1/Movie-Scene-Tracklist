@@ -60,8 +60,9 @@
 
 .userRating{
     position: relative;
-    left: 1vw;
+    left: 0.8vw;
     padding: 5px;
+    bottom: 0.5vh;
 }
 
 .commentAutomate{

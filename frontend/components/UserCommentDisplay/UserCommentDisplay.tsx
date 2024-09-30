@@ -1,5 +1,4 @@
 import styles from './UserCommentDisplay.module.css';
-import star from '@/public/assets/icons8-star-48.png';
 import { doc, collection, getDocs, query, where, Timestamp } from 'firebase/firestore';
 import circle_checked from '@/public/assets/radio_checked.png';
 import circle_unchecked from '@/public/assets/radio_unchecked.png';
@@ -7,6 +6,7 @@ import { useState, useEffect} from 'react';
 import { User } from 'next-auth';
 import { clearInterval, clearTimeout, setInterval } from 'timers';
 import { time } from 'console';
+import Star from '../Star/Star';
 
 interface UserReviewProps{
     reviews: Array<UserReviewData>
@@ -27,15 +27,15 @@ const UserCommentDisplay: React.FC<UserReviewProps> = ({reviews}) =>{
     
     useEffect(() => {
         setDisplayComment(reviews[count]);
-    }, [count]);
+    }, [count, reviews]);
 
     useEffect(() => {
         const interval = setInterval(() => {
             setCount(num => num === 4? num = 0: num + 1);
-        }, 1000);
+        }, 10000);
         return () => clearInterval(interval);
-    }, []);
-    
+    }, [reviews.length]);
+
     return (
         <div className={styles.container}>
             <div className={styles.firstSection}>
@@ -43,8 +43,7 @@ const UserCommentDisplay: React.FC<UserReviewProps> = ({reviews}) =>{
                 <h2 className={styles.userDate}>{displayedComment.date ? displayedComment.date.toDate().toLocaleDateString() : 'Date not available'}</h2>
             </div>
             <div className={styles.secondSection}>
-                <span className={styles.userRating}>{
-                }
+                <span className={styles.userRating}>{Array(Number(displayedComment.score)).fill(<Star></Star>)}
                 </span>
             </div>
             <p className={styles.userComment}>{displayedComment.userReview}</p>
