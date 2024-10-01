@@ -46,7 +46,7 @@ const MovieRating: React.FC<movieRatingProps> = ({movieName, getAvgScore}) =>{
                 allData.push(doc.data() as ratingData);  
             });
 
-            if(allData.length >= 0){
+            if(allData.length > 0){
                 setIsDataAvailable(true);
                 setAmountOfReviews(allData.length);
                 let sumOfRatings = 0;                

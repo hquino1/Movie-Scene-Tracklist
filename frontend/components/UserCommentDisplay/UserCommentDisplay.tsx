@@ -31,7 +31,7 @@ const UserCommentDisplay: React.FC<UserReviewProps> = ({reviews}) =>{
 
     useEffect(() => {
         const interval = setInterval(() => {
-            setCount(num => num === 4? num = 0: num + 1);
+            setCount(prevCount => (prevCount + 1) % reviews.length);
         }, 10000);
         return () => clearInterval(interval);
     }, [reviews.length]);
@@ -39,7 +39,7 @@ const UserCommentDisplay: React.FC<UserReviewProps> = ({reviews}) =>{
     return (
         <div className={styles.container}>
             <div className={styles.firstSection}>
-                <h1 className={styles.userName}> {displayedComment.userReviewName}</h1>
+                <h1 className={styles.userName}> {displayedComment.userReviewName!}</h1>
                 <h2 className={styles.userDate}>{displayedComment.date ? displayedComment.date.toDate().toLocaleDateString() : 'Date not available'}</h2>
             </div>
             <div className={styles.secondSection}>
