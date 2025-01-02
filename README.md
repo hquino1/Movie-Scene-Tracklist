@@ -13,4 +13,5 @@ This project is a good basis for what a full scale application would look like f
 
  
 # Below is a video showcasing these components! 
+[![Watch the video](https://img.youtube.com/vi/W28hb_ZvSdc/0.jpg)](https://youtu.be/W28hb_ZvSdc)
 
