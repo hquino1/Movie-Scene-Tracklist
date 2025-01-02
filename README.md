@@ -13,5 +13,8 @@ This project is a good basis for what a full scale application would look like f
 
  
 # Below is a video showcasing these components! 
+## Movie tracklist and spotify integration
 [![Watch the video](https://img.youtube.com/vi/W28hb_ZvSdc/0.jpg)](https://youtu.be/W28hb_ZvSdc)
 
+## Movie ratings/comments
+[![Watch the video](https://img.youtube.com/vi/8l3yT8mRrdY/0.jpg)](https://youtu.be/8l3yT8mRrdY)
